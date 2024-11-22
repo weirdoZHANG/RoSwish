@@ -8,7 +8,7 @@ The mathematical definition adopted in this paper is `(x + α) * sigmoid(β * x)
 The general mathematical definition is `NsSinAFs(f)`, where `f = a * x + b * sin(x)`, where a and b represent the trainable parameters in the hidden layer dimension, and a and b start learning from 1 and 0, respectively.
 
 # Execution
-Please install pandas, sklearn and Python 3+.
+Please install torch, pandas, sklearn and Python 3+.
 
 # Citation
 If you find this useful in your research, please consider citing:
