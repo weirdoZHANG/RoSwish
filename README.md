@@ -10,7 +10,7 @@ The general mathematical definition is `NsSinAFs(f)`, where `f = a * x + b * sin
 # Execution
 Please install pandas, sklearn and Python 3+.
 
-## Citation
+# Citation
 If you find this useful in your research, please consider citing:
 
     @article{,
@@ -19,3 +19,6 @@ If you find this useful in your research, please consider citing:
       journal={},
       year={}
     }
+
+# Contact
+If you have any questions or want to use the code, please contact zhangshengbo2049@outlook.com.
