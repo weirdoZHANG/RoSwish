@@ -156,6 +156,7 @@ else:
 
 model.train()
 for epoch in range(training_epochs):
+    train_losses = []
     for bx, by in train_loader:
         bx, by = bx.to(device), by.to(device)
         optimizer.zero_grad()
@@ -163,8 +164,8 @@ for epoch in range(training_epochs):
         loss = criterion(outputs, by.float())
         loss.backward()
         optimizer.step()
-
-    history["train_loss" + key_str].append(loss.item())
+        train_losses.append(loss.item())
+    history["train_loss" + key_str].append(np.mean(train_losses))
 
     model.eval()
     with torch.no_grad():
@@ -189,7 +190,7 @@ for epoch in range(training_epochs):
         history["test_loss" + key_str].append(np.mean(test_losses))
         history["test_mae" + key_str].append(np.mean(test_maes))
 
-    print(f'Epoch [{epoch + 1}/{training_epochs}], Train Loss: {loss.item():.4f}, Val Loss: {np.mean(val_losses):.4f}, '
+    print(f'Epoch [{epoch + 1}/{training_epochs}], Train Loss: {np.mean(train_losses):.4f}, Val Loss: {np.mean(val_losses):.4f}, '
           f'Test Loss: {np.mean(test_losses):.4f}, Test MAE: {np.mean(test_maes):.4f}')
 
 pickle.dump(history, open("./data/ettm2_pred_" + nonlinearity_name + ".p", "wb"))
