@@ -16,11 +16,15 @@ Please install torch, pandas, sklearn and Python 3+.
 # Citation
 If you find this useful in your research, please consider citing:
 
-    @article{,
-      title={},
-      author={},
-      journal={},
-      year={}
+    @article{ZHANG2025107892,
+      title = {RoSwish: A novel Rotating Swish activation function with adaptive rotation around zero},
+      journal = {Neural Networks},
+      pages = {107892},
+      year = {2025},
+      issn = {0893-6080},
+      doi = {https://doi.org/10.1016/j.neunet.2025.107892},
+      url = {https://www.sciencedirect.com/science/article/pii/S0893608025007737},
+      author = {Shengbo Zhang and Guoqiang Ren}
     }
 
 # Contact
