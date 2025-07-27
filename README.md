@@ -18,13 +18,13 @@ If you find this useful in your research, please consider citing:
 
     @article{ZHANG2025107892,
       title = {RoSwish: A novel Rotating Swish activation function with adaptive rotation around zero},
+      author = {Shengbo Zhang and Guoqiang Ren},
       journal = {Neural Networks},
-      pages = {107892},
       year = {2025},
+      pages = {107892},
       issn = {0893-6080},
       doi = {https://doi.org/10.1016/j.neunet.2025.107892},
       url = {https://www.sciencedirect.com/science/article/pii/S0893608025007737},
-      author = {Shengbo Zhang and Guoqiang Ren}
     }
 
 # Contact
