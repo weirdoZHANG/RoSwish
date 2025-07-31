@@ -1,4 +1,4 @@
-# RoSwish: A novel Rotating Swish activation function with adaptive rotation around zero (一种新颖的旋转Swish激活函数，具有围绕零点的自适应旋转特性)
+# RoSwish: A novel Rotating Swish activation function with adaptive rotation around zero (一种新颖的Rotating Swish激活函数，具有围绕零点的自适应旋转特性)
 This software allows users to reproduce the results in RoSwish, Shengbo Zhang and Guoqiang Ren '2025'.
 
 # RoSwish Mathematical Definitions
