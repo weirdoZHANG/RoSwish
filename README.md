@@ -24,15 +24,16 @@ If you find this useful in your research, please consider citing:
       pages = {107892},
       issn = {0893-6080},
       doi = {https://doi.org/10.1016/j.neunet.2025.107892},
-      url = {https://www.sciencedirect.com/science/article/pii/S0893608025007737},
+      url = {https://www.sciencedirect.com/science/article/pii/S0893608025007737}
     }
 
 The sibling function of RoSwish, [Bounded Sigmoid Linear Unit (B-SiLU)](https://arxiv.org/abs/2505.22074v1):
-    @article{horuz2025resurrection,
-      title={The Resurrection of the ReLU},
-      author={Horuz, Co{\c{s}}ku Can and Kasenbacher, Geoffrey and Higuchi, Saya and Kairat, Sebastian and Stoltz, Jendrik and Pesl, Moritz and Moser, Bernhard A and Linse, Christoph and Martinetz, Thomas and Otte, Sebastian},
-      journal={arXiv preprint arXiv:2505.22074},
-      year={2025}
+
+    @article{ZHANG2025107892,
+      title = {The Resurrection of the ReLU},
+      author = {Horuz, Co{\c{s}}ku Can and Kasenbacher, Geoffrey and Higuchi, Saya and Kairat, Sebastian and Stoltz, Jendrik and Pesl, Moritz and Moser, Bernhard A and Linse, Christoph and Martinetz, Thomas and Otte, Sebastian},
+      journal = {arXiv preprint arXiv:2505.22074},
+      year = {2025}
     }
 
 # Contact
