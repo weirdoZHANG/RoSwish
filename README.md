@@ -27,5 +27,13 @@ If you find this useful in your research, please consider citing:
       url = {https://www.sciencedirect.com/science/article/pii/S0893608025007737},
     }
 
+The sibling function of RoSwish, [Bounded Sigmoid Linear Unit (B-SiLU)](https://arxiv.org/abs/2505.22074v1):
+    @article{horuz2025resurrection,
+      title={The Resurrection of the ReLU},
+      author={Horuz, Co{\c{s}}ku Can and Kasenbacher, Geoffrey and Higuchi, Saya and Kairat, Sebastian and Stoltz, Jendrik and Pesl, Moritz and Moser, Bernhard A and Linse, Christoph and Martinetz, Thomas and Otte, Sebastian},
+      journal={arXiv preprint arXiv:2505.22074},
+      year={2025}
+    }
+
 # Contact
 If you have any questions or want to use the code, please contact zhangshengbo2049@outlook.com.
