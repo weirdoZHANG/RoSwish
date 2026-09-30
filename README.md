@@ -29,7 +29,7 @@ If you find this useful in your research, please consider citing:
 
 The sibling function of RoSwish——[Bounded Sigmoid Linear Unit (B-SiLU)](https://arxiv.org/abs/2505.22074v1):
 
-    @article{ZHANG2025107892,
+    @article{bsilu,
       title = {The Resurrection of the ReLU},
       author = {Horuz, Co{\c{s}}ku Can and Kasenbacher, Geoffrey and Higuchi, Saya and Kairat, Sebastian and Stoltz, Jendrik and Pesl, Moritz and Moser, Bernhard A and Linse, Christoph and Martinetz, Thomas and Otte, Sebastian},
       journal = {arXiv preprint arXiv:2505.22074},
