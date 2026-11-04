@@ -38,6 +38,8 @@ Special cases:
 - `α = 0, β = 1` → SiLU / Swish-1.
 - For other `(α, β)` combinations RoSwish approximates a micro-rotated version of Mish near the origin, or small variants of GELU / ELU / SELU.
 
+> **Note on `α = 0, β = 1`:** the published paper states `α = 1, β = 0` for this case. Substituting into Eq. (1) shows that `α = 1, β = 0` yields `0.5x`, the linear degeneration described in the Lemma 1 proof, whereas `x·sigmoid(x)` — i.e. SiLU / Swish-1 — requires `α = 0, β = 1`. This repository uses `α = 0, β = 1`.
+
 ### Parameter initialization and optimization
 
 | Parameter | Initial value | Shape (FC) | Shape (CNN) |
@@ -204,6 +206,8 @@ f(x) = x · sigmoid(β · x) + 0.5 · α · tanh(0.5 · β · x)
 特殊情形：
 - `α = 0, β = 1` → SiLU / Swish-1。
 - 取其他 `(α, β)` 时，RoSwish 可近似为原点附近微旋转的 Mish，或与 GELU / ELU / SELU 相差很小的变体。
+
+> **关于 `α = 0, β = 1`：** 发表版论文此处写作 `α = 1, β = 0`。代入式 (1) 可见 `α = 1, β = 0` 得到的是 `0.5x`，即 Lemma 1 证明中所述的线性退化情形；而 `x·sigmoid(x)`（即 SiLU / Swish-1）对应的是 `α = 0, β = 1`。本仓库按 `α = 0, β = 1` 实现与说明。
 
 ### 参数初始化与优化
 
