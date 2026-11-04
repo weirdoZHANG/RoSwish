@@ -180,7 +180,7 @@ Questions or usage of the code: `zhangshengbo@sdust.edu.cn`.
 > DOI: [10.1016/j.neunet.2025.107892](https://doi.org/10.1016/j.neunet.2025.107892) ·
 > [ScienceDirect](https://www.sciencedirect.com/science/article/pii/S0893608025007737)
 >
-> **免费下载 PDF：** 本论文为**非开放获取（非 OA）**状态，ScienceDirect 上的全文位于付费墙后（个人读者需按篇购买，或通过机构订阅访问）。论文正式发表版 PDF 已随本仓库存档于 [`paper/`](paper/) 目录，可直接免费下载：
+> **免费下载 PDF：** 本论文为 **非开放获取** 状态，ScienceDirect 上的全文位于付费墙后（个人读者需按篇购买，或通过机构订阅访问）。论文正式发表版 PDF 已随本仓库存档于 [`paper/`](paper/) 目录，可直接免费下载：
 > [`RoSwish：A novel Rotating Swish activation function with adaptive rotation around zero.pdf`](paper/RoSwish%EF%BC%9AA%20novel%20Rotating%20Swish%20activation%20function%20with%20adaptive%20rotation%20around%20zero.pdf)。
 
 RoSwish 将 ReLU、GELU、ELU、PReLU、Swish 等激活函数的平滑性、梯度稳定性、自门控、自适应性与噪声鲁棒性整合进同一个门控机制中，其围绕零点的旋转角度按通道维度自适应学习。受非平稳随机过程理论启发，论文还提出了 **NsSinAFs**——一族基于非平稳正弦波的激活函数。
