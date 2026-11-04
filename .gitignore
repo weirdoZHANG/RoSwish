@@ -1,0 +1,42 @@
+# ---- Python bytecode / cache ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ---- Virtual environments ----
+venv/
+.venv/
+env/
+ENV/
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
+
+# ---- IDE / editor ----
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- PyTorch model checkpoints ----
+*.pth
+*.pt
+
+# ---- Experiment artifacts (produced by the scripts; not source data) ----
+# MNIST scripts write per-activation pickles into data/
+data/*.p
+*.pkl
+*.pickle
+# CIFAR-10 scripts write results.csv + network.pth under per-run directories
+results.csv
+cifar-10-batches-py/
