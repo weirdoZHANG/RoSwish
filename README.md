@@ -35,7 +35,7 @@ f(x) = x · sigmoid(β · x) + 0.5 · α · tanh(0.5 · β · x)
 The first (simpler) form is what the code implements; the second has higher computational complexity and is only used for theoretical analysis.
 
 Special cases:
-- `α = 1, β = 1` → SiLU / Swish-1.
+- `α = 0, β = 1` → SiLU / Swish-1.
 - For other `(α, β)` combinations RoSwish approximates a micro-rotated version of Mish near the origin, or small variants of GELU / ELU / SELU.
 
 ### Parameter initialization and optimization
@@ -200,7 +200,7 @@ f(x) = x · sigmoid(β · x) + 0.5 · α · tanh(0.5 · β · x)
 代码中实现的是第一个（更简洁的）形式；第二个形式计算复杂度更高，仅用于理论分析。
 
 特殊情形：
-- `α = 1, β = 1` → SiLU / Swish-1。
+- `α = 0, β = 1` → SiLU / Swish-1。
 - 取其他 `(α, β)` 时，RoSwish 可近似为原点附近微旋转的 Mish，或与 GELU / ELU / SELU 相差很小的变体。
 
 ### 参数初始化与优化
