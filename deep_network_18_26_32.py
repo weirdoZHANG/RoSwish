@@ -14,7 +14,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 # relu, gelu, silu, selu, mish, prelu, erfact, swish, psgu, aoaf, sinlu, tanhlu, aqulu, or roswish
 nonlinearity_name = sys.argv[1] if len(sys.argv) > 1 else 'roswish'
 learning_rate = float(sys.argv[2]) if len(sys.argv) > 2 else 1e-4
-hls = float(sys.argv[3]) if len(sys.argv) > 3 else 17  # 17 25 31
+hls = int(sys.argv[3]) if len(sys.argv) > 3 else 17  # 17 -> 18 layers, 25 -> 26, 31 -> 32
 
 training_epochs = 50
 batch_size = 128

@@ -81,7 +81,7 @@ All scripts select the activation function via the first command-line argument, 
 |--------|------|------------------|--------|
 | `mnist_fcn.py` | MNIST classification | 8 hidden FC layers × 128 units, 50 epochs, batch 128, Kaiming init (PyTorch default for `nn.Linear`), LRs ∈ {1e-3, 1e-4, 1e-5}, optional dropout `p` (3rd arg) | Log Loss / Error |
 | `mnist_ae.py` | MNIST autoencoding | Autoencoder 1000–500–250–30–250–500–1000, 70 epochs, batch 64 | MSE |
-| `deep_network_18_26_32.py` | Deep-network stability | FC networks with 18 / 26 / 32 hidden layers, MNIST, lr = 1e-4 | Log Loss / Error |
+| `deep_network_18_26_32.py` | Deep-network stability | FC networks with 18 / 26 / 32 hidden layers, MNIST, lr = 1e-4; depth via the 3rd argument (17 → 18, 25 → 26, 31 → 32; default 17) | Log Loss / Error |
 | `gaussian_cifar10.py` | CIFAR-10 noise robustness | 9-layer shallow CNN (96 base channels), ZCA whitening + Gaussian noise σ=0.15, 200 epochs, batch 128, lr held constant for epochs 1–100 then decayed linearly to 0 | Log Loss / Error |
 | `load_cifar10.py` | CIFAR-10 data loader | Standalone helpers (`load_data10`, `load_batch`, optional download); not imported by the CNN script, which reads `cifar-10-batches-py/` directly | — |
 | `twitter_pos.py` | Tweet part-of-speech tagging | 2 layers × 256 units, 30 epochs, batch 16, dropout 0.8, window size 1 over 50-d embeddings, 24 POS tags | Log Loss / Error |
@@ -250,7 +250,7 @@ NsSinAFs(f) = AFs(a · x + b · sin(x))
 |------|------|------------------|------|
 | `mnist_fcn.py` | MNIST 分类 | 8 层全连接 × 128 单元，50 epoch，batch 128，Kaiming 初始化（`nn.Linear` 的 PyTorch 默认），学习率 ∈ {1e-3, 1e-4, 1e-5}，可选 dropout（第 3 个参数） | Log Loss / Error |
 | `mnist_ae.py` | MNIST 自编码 | 自编码器 1000–500–250–30–250–500–1000，70 epoch，batch 64 | MSE |
-| `deep_network_18_26_32.py` | 深层网络稳定性 | 18 / 26 / 32 层全连接，MNIST，lr = 1e-4 | Log Loss / Error |
+| `deep_network_18_26_32.py` | 深层网络稳定性 | 18 / 26 / 32 层全连接，MNIST，lr = 1e-4；层数由第 3 个参数指定（17 → 18 层、25 → 26 层、31 → 32 层，默认 17） | Log Loss / Error |
 | `gaussian_cifar10.py` | CIFAR-10 噪声鲁棒性 | 9 层浅层 CNN（96 个基础通道），ZCA 白化 + 高斯噪声 σ=0.15，200 epoch，batch 128，学习率在前 100 个 epoch 保持不变、随后线性衰减到 0 | Log Loss / Error |
 | `load_cifar10.py` | CIFAR-10 数据加载 | 独立的加载工具（`load_data10`、`load_batch`、可选下载）；CNN 脚本并未引用它，而是直接读取 `cifar-10-batches-py/` | — |
 | `twitter_pos.py` | Twitter 词性标注 | 2 层 × 256 单元，30 epoch，batch 16，dropout 0.8，窗口大小 1，使用 50 维词向量，24 个词性标签 | Log Loss / Error |
