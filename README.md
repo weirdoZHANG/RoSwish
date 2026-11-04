@@ -38,7 +38,7 @@ Special cases:
 - `α = 0, β = 1` → SiLU / Swish-1.
 - For other `(α, β)` combinations RoSwish approximates a micro-rotated version of Mish near the origin, or small variants of GELU / ELU / SELU.
 
-> **Note on this special case:** the paper's `α = 1, β = 0` is a typo — the actual value is `α = 0, β = 1`, under which Eq. (1) becomes `x·sigmoid(x) = SiLU / Swish-1`. (Substituting `α = 1, β = 0` instead gives `0.5x`, the linear degeneration described in Lemma 1.)
+> **Note on this special case:** the paper's `α = 1, β = 0` is a typo — the actual value is `α = 0, β = 1`, under which Eq. (1) becomes `x·sigmoid(x) = SiLU / Swish-1`.
 
 ### Parameter initialization and optimization
 
@@ -207,7 +207,7 @@ f(x) = x · sigmoid(β · x) + 0.5 · α · tanh(0.5 · β · x)
 - `α = 0, β = 1` → SiLU / Swish-1。
 - 取其他 `(α, β)` 时，RoSwish 可近似为原点附近微旋转的 Mish，或与 GELU / ELU / SELU 相差很小的变体。
 
-> **注：** 论文中的 "α = 1, β = 0" 为笔误，实际应为 `α = 0, β = 1`——此时式 (1) 退化为 `x·sigmoid(x)`，即 SiLU / Swish-1（若取 `α = 1, β = 0`，得到的是 `0.5x`，即 Lemma 1 所述的线性退化情形）。
+> **注：** 论文中的 "α = 1, β = 0" 为笔误，实际应为 `α = 0, β = 1`，此时式 (1) 即 `x·sigmoid(x) = SiLU / Swish-1`。
 
 ### 参数初始化与优化
 
