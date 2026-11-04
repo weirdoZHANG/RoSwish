@@ -103,10 +103,12 @@ Data:
 
 ## 5. Headline results (median of 5 runs)
 
-- **MNIST classification:** RoSwish reduces Log Loss and Error by at least **16.02 %** versus the best baseline (`0.1172 → 0.0957` Log Loss, `0.0225 → 0.0185` Error at `lr=1e-3`; improvements of 8.54 %, 5.66 %, 1.82 % also hold at `lr=1e-4` and `lr=1e-5`).
-- **MNIST autoencoder:** MSE reduced by at least **5 %** under low learning rate (`0.0100 → 0.0095` at `lr=1e-5`).
-- **Twitter POS tagging:** improvement of at least **3.65 %** under medium-to-high LR (`0.488 → 0.4758` Log Loss at `lr=1e-3`); combining RoSwish with BatchNorm gives a further **30.19 %** reduction at low LR.
-- **ETTm2 prediction:** improvement of at least **6.06 %** under medium-to-low LR (`0.1233 → 0.1200` MSE at `lr=1e-4`).
+> **How the percentages are computed:** each percentage is the *sum* of the relative reductions of the two reported metrics, each measured against the best baseline value in that column. Where several learning rates are covered, the per-LR percentages are summed as well.
+
+- **MNIST classification:** **8.54 % / 5.66 % / 1.82 %** at `lr=1e-3 / 1e-4 / 1e-5` respectively, summing to **16.02 %** across the three learning rates. At `lr=1e-3` this is AQuLU `0.1001 → 0.0957` Log Loss plus SELU `0.0193 → 0.0185` Error.
+- **MNIST autoencoder:** **5 %** at `lr=1e-5` (`0.0100 → 0.0095` MSE); at `lr=1e-3` and `lr=1e-4` RoSwish is slightly behind the baseline (`−4.88 %` and `−2.04 %`).
+- **Twitter POS tagging:** **3.65 %** summed over medium-to-high LR — `0.59 %` at `lr=1e-3` (GELU `0.4800 → 0.4758` Log Loss, AOAF `0.1380 → 0.1384` Error) plus `3.06 %` at `lr=1e-4`; at `lr=1e-5` it is `−9.05 %`. Combining RoSwish with BatchNorm gives a further **30.19 %** reduction at `lr=1e-5`.
+- **ETTm2 prediction:** **6.06 %** summed over medium-to-low LR — `3.45 %` at `lr=1e-4` (SinLU `0.1233 → 0.1200` MSE, `0.2320 → 0.2302` MAE) plus `2.61 %` at `lr=1e-5`; at `lr=1e-3` it is `−13.42 %`.
 - **CIFAR-10 (Gaussian noise):** RoSwish `Log Loss = 0.4307`, `Error = 0.0841`, on par with / better than GELU (`0.4423 / 0.0837`) and SinLU (`0.4350 / 0.0833`).
 - **Deep networks:** only SELU, PSGU, SinLU, tanhLU and RoSwish still converge at 26 hidden layers; at 32 layers RoSwish (`0.1481 / 0.0340`) is the best non-SELU convergence result.
 - **NsSin family:** on average **+6.55 %** enhancement on MNIST (1.08 % Log-Loss reduction, 5.47 % Error reduction versus the original activations), with only a modest overhead in training time.
@@ -268,10 +270,12 @@ NsSinAFs(f) = AFs(a · x + b · sin(x))
 
 ## 5. 主要实验结果（5 次运行中位数）
 
-- **MNIST 分类：** 相对最优基线，Log Loss 与 Error 平均下降至少 **16.02 %**（`lr=1e-3` 下 `0.1172 → 0.0957`，`0.0225 → 0.0185`；在 `lr=1e-4`、`lr=1e-5` 下仍分别有 8.54 %、5.66 %、1.82 % 的下降）。
-- **MNIST 自编码：** 低学习率下 MSE 至少降低 **5 %**（`lr=1e-5` 下 `0.0100 → 0.0095`）。
-- **Twitter 词性标注：** 中高学习率下提升至少 **3.65 %**（`lr=1e-3` 下 Log Loss `0.488 → 0.4758`）；RoSwish 与 BatchNorm 结合后，低学习率下再降 **30.19 %**。
-- **ETTm2 预测：** 中低学习率下提升至少 **6.06 %**（`lr=1e-4` 下 MSE `0.1233 → 0.1200`）。
+> **百分比的计算方式：** 每个百分比为两项指标的**相对降幅之和**，各自相对该列最优基线计算；若涉及多个学习率，再把各学习率的百分比累加。
+
+- **MNIST 分类：** 在 `lr=1e-3 / 1e-4 / 1e-5` 下分别为 **8.54 % / 5.66 % / 1.82 %**，三个学习率累加为 **16.02 %**。`lr=1e-3` 时对应 AQuLU `0.1001 → 0.0957`（Log Loss）与 SELU `0.0193 → 0.0185`（Error）。
+- **MNIST 自编码：** `lr=1e-5` 下为 **5 %**（MSE `0.0100 → 0.0095`）；`lr=1e-3` 与 `lr=1e-4` 下则略低于基线（`−4.88 %` 与 `−2.04 %`）。
+- **Twitter 词性标注：** 中高学习率累加为 **3.65 %** —— `lr=1e-3` 下 `0.59 %`（GELU `0.4800 → 0.4758` Log Loss，AOAF `0.1380 → 0.1384` Error）加 `lr=1e-4` 下 `3.06 %`；`lr=1e-5` 下为 `−9.05 %`。RoSwish 与 BatchNorm 结合后，`lr=1e-5` 下再降 **30.19 %**。
+- **ETTm2 预测：** 中低学习率累加为 **6.06 %** —— `lr=1e-4` 下 `3.45 %`（SinLU `0.1233 → 0.1200` MSE，`0.2320 → 0.2302` MAE）加 `lr=1e-5` 下 `2.61 %`；`lr=1e-3` 下为 `−13.42 %`。
 - **CIFAR-10（高斯噪声）：** RoSwish `Log Loss = 0.4307`，`Error = 0.0841`，与 GELU（`0.4423 / 0.0837`）、SinLU（`0.4350 / 0.0833`）持平或更优。
 - **深层网络：** 26 层时仅 SELU、PSGU、SinLU、tanhLU、RoSwish 仍收敛；32 层时 RoSwish（`0.1481 / 0.0340`）是除 SELU 外最好的收敛结果。
 - **NsSin 族：** 在 MNIST 上相对原激活平均提升 **6.55 %**（Log Loss 降 1.08 %，Error 降 5.47 %），训练时间仅有少量增加。
