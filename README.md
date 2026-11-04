@@ -77,19 +77,19 @@ All scripts select the activation function via the first command-line argument, 
 
 | Script | Task | Model / protocol | Metric |
 |--------|------|------------------|--------|
-| `mnist_fcn.py` | MNIST classification | 8 hidden FC layers × 128 units, 50 epochs, batch 128, Kaiming init, LRs ∈ {1e-3, 1e-4, 1e-5}, optional dropout `p` (3rd arg) | Log Loss / Error |
+| `mnist_fcn.py` | MNIST classification | 8 hidden FC layers × 128 units, 50 epochs, batch 128, Kaiming init (PyTorch default for `nn.Linear`), LRs ∈ {1e-3, 1e-4, 1e-5}, optional dropout `p` (3rd arg) | Log Loss / Error |
 | `mnist_ae.py` | MNIST autoencoding | Autoencoder 1000–500–250–30–250–500–1000, 70 epochs, batch 64 | MSE |
 | `deep_network_18_26_32.py` | Deep-network stability | FC networks with 18 / 26 / 32 hidden layers, MNIST, lr = 1e-4 | Log Loss / Error |
-| `gaussian_cifar10.py` | CIFAR-10 noise robustness | 9-layer shallow CNN (96 channels), ZCA whitening + Gaussian noise σ=0.15, 200 epochs, batch 128, cosine-style lr schedule | Log Loss / Error |
-| `load_cifar10.py` | CIFAR-10 data loader | Shared loading / ZCA utilities used by the CNN script | — |
+| `gaussian_cifar10.py` | CIFAR-10 noise robustness | 9-layer shallow CNN (96 base channels), ZCA whitening + Gaussian noise σ=0.15, 200 epochs, batch 128, lr held constant for epochs 1–100 then decayed linearly to 0 | Log Loss / Error |
+| `load_cifar10.py` | CIFAR-10 data loader | Standalone helpers (`load_data10`, `load_batch`, optional download); not imported by the CNN script, which reads `cifar-10-batches-py/` directly | — |
 | `twitter_pos.py` | Tweet part-of-speech tagging | 2 layers × 256 units, 30 epochs, batch 16, dropout 0.8, window size 1 over 50-d embeddings, 24 POS tags | Log Loss / Error |
 | `ettm2_pred.py` | ETTm2 time-series forecasting | 8 hidden FC layers × 64 units, 50 epochs, batch 32, input length = forecast length = 96 | MSE / MAE |
-| `exchange_pred.py` | Exchange-rate forecasting (Appendix A) | Daily rates of 8 countries, 1990–2016 | MSE / MAE |
+| `exchange_pred.py` | Exchange-rate forecasting (Appendix A.3) | Last two of the 8 currencies (`6`, `OT`) over the final 730 days of the daily-rate CSV, train / val / test = 7:1:2 | MSE / MAE |
 | `ns_sin.py` | NsSin family on MNIST | Same 8-layer FC setup as `mnist_fcn.py`, lr = 1e-4 | Log Loss / Error |
 
 Data:
 - `data/ETTm2/ETTm2.csv` — ETTm2 dataset.
-- `data/Exchange/exchange_rate.csv` — exchange-rate dataset.
+- `data/Exchange/exchange_rate.csv` — daily exchange rates of 8 currencies; the bundled file spans 1990-01-01 to 2010-10-10 (the paper describes this source as covering 1990–2016).
 - `data/Tweets/` — Twitter POS corpus (`tweets-train/dev/devtest.txt`) and 50-d embeddings (`embeddings-twitter.txt`).
 - MNIST is downloaded automatically by `torchvision`; CIFAR-10 must be unpacked into `./cifar-10-batches-py/` next to the scripts.
 
@@ -244,19 +244,19 @@ NsSinAFs(f) = AFs(a · x + b · sin(x))
 
 | 脚本 | 任务 | 模型 / 实验设置 | 指标 |
 |------|------|------------------|------|
-| `mnist_fcn.py` | MNIST 分类 | 8 层全连接 × 128 单元，50 epoch，batch 128，Kaiming 初始化，学习率 ∈ {1e-3, 1e-4, 1e-5}，可选 dropout（第 3 个参数） | Log Loss / Error |
+| `mnist_fcn.py` | MNIST 分类 | 8 层全连接 × 128 单元，50 epoch，batch 128，Kaiming 初始化（`nn.Linear` 的 PyTorch 默认），学习率 ∈ {1e-3, 1e-4, 1e-5}，可选 dropout（第 3 个参数） | Log Loss / Error |
 | `mnist_ae.py` | MNIST 自编码 | 自编码器 1000–500–250–30–250–500–1000，70 epoch，batch 64 | MSE |
 | `deep_network_18_26_32.py` | 深层网络稳定性 | 18 / 26 / 32 层全连接，MNIST，lr = 1e-4 | Log Loss / Error |
-| `gaussian_cifar10.py` | CIFAR-10 噪声鲁棒性 | 9 层浅层 CNN（96 通道），ZCA 白化 + 高斯噪声 σ=0.15，200 epoch，batch 128，余弦式学习率调度 | Log Loss / Error |
-| `load_cifar10.py` | CIFAR-10 数据加载 | CNN 脚本共用的加载 / ZCA 工具 | — |
+| `gaussian_cifar10.py` | CIFAR-10 噪声鲁棒性 | 9 层浅层 CNN（96 个基础通道），ZCA 白化 + 高斯噪声 σ=0.15，200 epoch，batch 128，学习率在前 100 个 epoch 保持不变、随后线性衰减到 0 | Log Loss / Error |
+| `load_cifar10.py` | CIFAR-10 数据加载 | 独立的加载工具（`load_data10`、`load_batch`、可选下载）；CNN 脚本并未引用它，而是直接读取 `cifar-10-batches-py/` | — |
 | `twitter_pos.py` | Twitter 词性标注 | 2 层 × 256 单元，30 epoch，batch 16，dropout 0.8，窗口大小 1，使用 50 维词向量，24 个词性标签 | Log Loss / Error |
 | `ettm2_pred.py` | ETTm2 时间序列预测 | 8 层全连接 × 64 单元，50 epoch，batch 32，输入长度 = 预测长度 = 96 | MSE / MAE |
-| `exchange_pred.py` | 汇率预测（附录 A） | 8 个国家 1990–2016 年日汇率 | MSE / MAE |
+| `exchange_pred.py` | 汇率预测（附录 A.3） | 取 8 个币种中的最后两个（`6`、`OT`）、日汇率 CSV 最后 730 天，训练 / 验证 / 测试 = 7:1:2 | MSE / MAE |
 | `ns_sin.py` | MNIST 上的 NsSin 族 | 与 `mnist_fcn.py` 相同的 8 层全连接设置，lr = 1e-4 | Log Loss / Error |
 
 数据：
 - `data/ETTm2/ETTm2.csv` — ETTm2 数据集。
-- `data/Exchange/exchange_rate.csv` — 汇率数据集。
+- `data/Exchange/exchange_rate.csv` — 8 个币种的日汇率数据；仓库内文件时间范围为 1990-01-01 至 2010-10-10（论文中该数据集被描述为覆盖 1990–2016 年）。
 - `data/Tweets/` — Twitter 词性标注语料（`tweets-train/dev/devtest.txt`）与 50 维词向量（`embeddings-twitter.txt`）。
 - MNIST 由 `torchvision` 自动下载；CIFAR-10 需要手动解压到脚本同级目录的 `./cifar-10-batches-py/`。
 
