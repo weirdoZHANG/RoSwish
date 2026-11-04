@@ -2,7 +2,7 @@
 
 > English is expanded by default; click **中文** below to switch to the Chinese version.
 
-<details open>
+<details name="lang" open>
 <summary><b>English</b></summary>
 
 Official PyTorch implementation of the paper:
@@ -171,7 +171,7 @@ Questions or usage of the code: `zhangshengbo@sdust.edu.cn`.
 
 </details>
 
-<details>
+<details name="lang">
 <summary><b>中文</b></summary>
 
 本仓库为论文的官方 PyTorch 实现：
